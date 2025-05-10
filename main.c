@@ -1,28 +1,36 @@
+// main.c
+
 #include <stdio.h>
 
-void afficher_cercle() {
-    const int rayon = 10;
-    const int diametre = rayon * 2;
+void afficher_dessin() {
+    int lignes[9][3] = {
+        {4, '*', 1},
+        {3, '*', 3},
+        {2, '*', 5},
+        {1, '*', 7},
+        {0, '*', 9},
+        {1, '*', 7},
+        {2, '*', 5},
+        {3, '*', 3},
+        {4, '*', 1}
+    };
 
-    for (int y = 0; y <= diametre; y++) {
-        for (int x = 0; x <= diametre; x++) {
-            // Utilisation de l'équation d'un cercle : (x - r)^2 + (y - r)^2 ≈ r^2
-            int dx = x - rayon;
-            int dy = y - rayon;
-            int distance_carre = dx * dx + dy * dy;
+    for (int i = 0; i < 9; i++) {
+        int espaces = lignes[i][0];
+        char caractere = (char)lignes[i][1];
+        int nb_caracteres = lignes[i][2];
 
-            // On dessine si on est proche de la surface du cercle
-            if (distance_carre >= rayon * rayon - rayon && distance_carre <= rayon * rayon + rayon) {
-                printf("*");
-            } else {
-                printf(" ");
-            }
+        for (int j = 0; j < espaces; j++) {
+            printf(" ");
+        }
+        for (int k = 0; k < nb_caracteres; k++) {
+            printf("%c", caractere);
         }
         printf("\n");
     }
 }
 
 int main() {
-    afficher_cercle();
+    afficher_dessin();
     return 0;
 }
