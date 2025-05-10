@@ -1,36 +1,42 @@
-// main.c
-
 #include <stdio.h>
 
-void afficher_dessin() {
-    int lignes[9][3] = {
-        {4, '*', 1},
-        {3, '*', 3},
-        {2, '*', 5},
-        {1, '*', 7},
-        {0, '*', 9},
-        {1, '*', 7},
-        {2, '*', 5},
-        {3, '*', 3},
-        {4, '*', 1}
+void afficher_figure() {
+    int lignes[10][2] = {
+        {0, 10},  // ligne pleine
+        {0, 1},   // bord gauche
+        {0, 1},
+        {0, 1},
+        {0, 1},
+        {0, 1},
+        {0, 1},
+        {0, 1},
+        {0, 1},
+        {0, 10}   // ligne pleine
     };
 
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 10; i++) {
         int espaces = lignes[i][0];
-        char caractere = (char)lignes[i][1];
-        int nb_caracteres = lignes[i][2];
+        int caracteres = lignes[i][1];
 
         for (int j = 0; j < espaces; j++) {
             printf(" ");
         }
-        for (int k = 0; k < nb_caracteres; k++) {
-            printf("%c", caractere);
+
+        if (caracteres == 1 && i != 0 && i != 9) {
+            printf("*");
+            for (int j = 0; j < 8; j++) printf(" ");
+            printf("*");
+        } else {
+            for (int j = 0; j < caracteres; j++) {
+                printf("*");
+            }
         }
+
         printf("\n");
     }
 }
 
 int main() {
-    afficher_dessin();
+    afficher_figure();
     return 0;
 }
