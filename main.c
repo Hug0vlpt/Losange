@@ -1,42 +1,36 @@
 #include <stdio.h>
 
-void afficher_figure() {
-    int lignes[10][2] = {
-        {0, 10},  // ligne pleine
-        {0, 1},   // bord gauche
-        {0, 1},
-        {0, 1},
-        {0, 1},
-        {0, 1},
-        {0, 1},
-        {0, 1},
-        {0, 1},
-        {0, 10}   // ligne pleine
+void afficher_dessin() {
+    int lignes[15][3] = {
+        {7, '*', 1},
+        {7, '*', 1},
+        {3, '*', 1}, {11, '*', 1},
+        {4, '*', 1}, {10, '*', 1},
+        {5, '*', 1}, {9, '*', 1},
+        {0, '*', 15},
+        {5, '*', 1}, {9, '*', 1},
+        {4, '*', 1}, {10, '*', 1},
+        {3, '*', 1}, {11, '*', 1},
+        {7, '*', 1},
+        {7, '*', 1}
     };
 
-    for (int i = 0; i < 10; i++) {
-        int espaces = lignes[i][0];
-        int caracteres = lignes[i][1];
+    for (int i = 0; i < 15; i++) {
+        int esp = lignes[i][0];
+        char c = (char)lignes[i][1];
+        int count = lignes[i][2];
 
-        for (int j = 0; j < espaces; j++) {
+        for (int j = 0; j < esp; j++) {
             printf(" ");
         }
-
-        if (caracteres == 1 && i != 0 && i != 9) {
-            printf("*");
-            for (int j = 0; j < 8; j++) printf(" ");
-            printf("*");
-        } else {
-            for (int j = 0; j < caracteres; j++) {
-                printf("*");
-            }
+        for (int k = 0; k < count; k++) {
+            printf("%c", c);
         }
-
         printf("\n");
     }
 }
 
 int main() {
-    afficher_figure();
+    afficher_dessin();
     return 0;
 }
